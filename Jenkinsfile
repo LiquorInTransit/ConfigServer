@@ -14,4 +14,9 @@ node {
          ansiblePlaybook credentialsId: 'ssh-credentials', installation: 'ansible-installation', playbook: 'deploy.yaml', sudoUser: null
       }      
    }
+   stage('TriggerDiscoveryBuild') {
+   		if (env.BRANCH_NAME == 'master') {
+		    build job: '../DiscoveryService/master', wait: false
+		}
+   }
 }

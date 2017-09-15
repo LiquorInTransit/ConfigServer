@@ -1,17 +1,17 @@
 zuul:
   sensitiveHeaders:
   routes:
-    uaa-service:
-      sensitiveHeaders:
-      path: /uaa/**
-      stripPrefix: false
+#    uaa-service:
+#      sensitiveHeaders:
+#      path: /uaa/**
+#      stripPrefix: false
     account-service:
       sensitiveHeaders:
-      path: /accounts/**
-      stripPrefix: true
+      path: /api/accounts/**
+      stripPrefix: false
     order-service:
       sensitiveHeaders:
-      path: /orders/**
+      path: /api/orders/**
       stripPrefix: false
 
 hystrix:

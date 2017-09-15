@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+#        git:
+#          uri: https://github.com/LiquorInTransit/Config.git
+          
+---
+
+spring:
+  profiles: dev
+server:
+  port: 8888

@@ -1,0 +1,24 @@
+spring:
+  boot:
+    admin:
+      url: http://localhost:8080
+      username: "${security.user.name}"
+      password: "${security.user.password}"
+      routes:
+        endpoints: metrics,info,trace,logfile,loggers,hystrix.stream,mappings
+    
+security:
+  user:
+    name: admin
+    password: admin
+
+
+---
+
+spring:
+  profiles: dev
+  boot:
+    admin:
+      url: http://localhost:8080
+server:
+  port: 8010

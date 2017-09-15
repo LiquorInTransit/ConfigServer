@@ -1,0 +1,17 @@
+security:
+  oauth2:
+    client:
+      client-id: LITSystem
+      client-secret: LITSystem
+      access-token-uri: http://some-EIP:8080/uaa/oauth/token
+      grant-type: client_credentials
+      scope: system
+      
+---
+   
+spring:
+  profiles: dev
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:5000/uaa/oauth/token

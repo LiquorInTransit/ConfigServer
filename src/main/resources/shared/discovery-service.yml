@@ -1,0 +1,47 @@
+server:
+  port: 8761
+  
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin
+  
+eureka:
+  datacenter: cloud
+  client:
+    region: us-east-2
+    serviceUrl:
+      defaultZone: http://admin:admin@ec2-13-59-80-6.us-east-2.compute.amazonaws.com:8761/eureka/
+  instance:
+    healthCheckUrlPath: ${management.contextPath}/health
+    metadata-map:
+      management.context-path: "${management.contextPath}"
+  server:
+    enableSelfPreservation: false
+    renewalPercentThreshold: 0.1
+    
+---
+   
+spring:
+  profiles: dev
+server:
+  port: 8761
+  
+security:
+  basic:
+    enabled: false
+  
+eureka:
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    hostname: localhost
+    port: ${server.port}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+    

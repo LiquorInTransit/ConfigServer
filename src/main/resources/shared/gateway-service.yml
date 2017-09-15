@@ -1,0 +1,36 @@
+zuul:
+  sensitiveHeaders:
+  routes:
+    uaa-service:
+      sensitiveHeaders:
+      path: /uaa/**
+      stripPrefix: false
+    account-service:
+      sensitiveHeaders:
+      path: /accounts/**
+      stripPrefix: true
+    order-service:
+      sensitiveHeaders:
+      path: /orders/**
+      stripPrefix: false
+
+hystrix:
+  command:
+    uaa-service:
+      execution:
+        timeout:
+          enabled: false
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 10000
+            
+
+---
+
+spring:
+  profiles: dev
+server:
+  port: 8080

@@ -49,6 +49,7 @@ security:
       
 eureka:
   instance:
+    instanceId: ${spring.application.name}:${random.string}
     healthCheckUrlPath: ${management.contextPath}/health
     metadata-map:
       management.context-path: "${management.contextPath}"

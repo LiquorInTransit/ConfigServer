@@ -120,7 +120,7 @@
     ec2_remote_facts:
        filters:
           "tag:Deploy": Blue
-          "tag:Name": ConfigServer
+          "tag:Name": ConfigDiscoveryServer
           instance-state-name: running
        region: "{{ region }}"
     register: new_server
@@ -129,7 +129,7 @@
     ec2_remote_facts:
        filters:
           "tag:Deploy": Green
-          "tag:Name": ConfigServer
+          "tag:Name": ConfigDiscoveryServer
           instance-state-name: running
        region: "{{ region }}"
     register: old_green
@@ -155,7 +155,7 @@
       exact_count: 0
       count_tag:
         Deploy: Green
-        Name: ConfigServer
+        Name: ConfigDiscoveryServer
       region: "{{ region }}"
       image: notneeded
 

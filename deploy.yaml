@@ -8,7 +8,7 @@
      keypair_name: lit-backend-keypair
      instance_type: t2.nano
      image_name: ami-8a7859ef
-     live_ip_address: 13.59.80.6
+     live_ip_address: 18.221.58.46
   
   tasks:
     - name: Setup Global Vars
@@ -18,7 +18,7 @@
         
     - name: Setup security group
       ec2_group:
-        name: config-discovery-http-server
+        name: http-server
         description: Security rules for HTTP Server
         region: "{{ region }}"
         rules_egress:
@@ -29,11 +29,6 @@
            - proto: tcp
              ports: 8080
              cidr_ip: 172.31.0.0/16
-             
-           - proto: tcp
-             from_port: 8761
-             to_port: 8761
-             cidr_ip: 0.0.0.0/0
            
            - proto: tcp
              ports: 22
@@ -42,17 +37,17 @@
     - name: Provision an instance
       ec2:
         key_name: "{{ keypair_name }}"
-        group: config-discovery-http-server
+        group: http-server
         instance_type: "{{ instance_type }}"
         image: "{{ image_name }}"
         wait: true
         region: "{{region}}"
         exact_count: 1 
         count_tag:
-          Name: ConfigDiscoveryServer
+          Name: ConfigServer
           Deploy: New
         instance_tags:
-          Name: ConfigDiscoveryServer
+          Name: ConfigServer
           Deploy: Blue
       register: ec2
 
@@ -120,7 +115,7 @@
     ec2_remote_facts:
        filters:
           "tag:Deploy": Blue
-          "tag:Name": ConfigDiscoveryServer
+          "tag:Name": ConfigServer
           instance-state-name: running
        region: "{{ region }}"
     register: new_server
@@ -129,7 +124,7 @@
     ec2_remote_facts:
        filters:
           "tag:Deploy": Green
-          "tag:Name": ConfigDiscoveryServer
+          "tag:Name": ConfigServer
           instance-state-name: running
        region: "{{ region }}"
     register: old_green
@@ -155,22 +150,22 @@
       exact_count: 0
       count_tag:
         Deploy: Green
-        Name: ConfigDiscoveryServer
+        Name: ConfigServer
       region: "{{ region }}"
       image: notneeded
 
-#  - name: All done, set new server to Green status
-#    ec2_tag:
-#       region: "{{ region }}"
-#       resource: "{{ new_server.instances[0].id }}"
-#       tags:
-#          Deploy: Green
-#       state: present
+  - name: All done, set new server to Green status
+    ec2_tag:
+       region: "{{ region }}"
+       resource: "{{ new_server.instances[0].id }}"
+       tags:
+          Deploy: Green
+       state: present
 
-#  - name: Remove Blue Tag
-#    ec2_tag:
-#       region: "{{ region }}"
-#       resource: "{{ new_server.instances[0].id }}"
-#       tags:
-#          Deploy: Blue
-#       state: absent
+  - name: Remove Blue Tag
+    ec2_tag:
+       region: "{{ region }}"
+       resource: "{{ new_server.instances[0].id }}"
+       tags:
+          Deploy: Blue
+       state: absent

@@ -1,0 +1,69 @@
+#  Builds a Eureka Server "prototype" instance. I'm going to create an AMI from this, manually (for now)
+
+- hosts: localhost
+  gather_facts: no
+  vars: 
+     region: us-east-2
+     keypair_name: lit-backend-keypair
+     security_group_name: eureka-server-security-group
+     instance_type: t2.nano
+     image_name: ami-8a7859ef
+
+  tasks:
+    - name: Add all instance public IPs to host group
+      add_host: hostname=13.59.80.6 groups=ec2hosts
+
+- hosts: tag_Name_ConfigDiscoveryServer ec2hosts
+  tasks:
+  - name: Send the deployment across to the new instance
+    copy: 
+       src: target/DiscoveryService-0.0.1-SNAPSHOT.jar
+       dest: /home/ec2-user/app/target/
+       mode: 0700
+
+  - name: Build a link to the executable so it becomes a service
+    file:
+            src: /home/ec2-user/app/target/DiscoveryService-0.0.1-SNAPSHOT.jar
+            dest: /etc/init.d/discovery-service
+            state: link
+    become: true
+
+  - name: Install microservice as a startup service
+    service:
+            name: discovery-service
+            state: started
+            enabled: yes
+    become: true
+
+  - name: Wait for the new webserver to begin responding
+    wait_for:
+            host: localhost
+            port: 8761
+            state: started
+            
+- hosts: localhost
+  tasks:
+  - name: Gather facts about the new blue server
+    ec2_remote_facts:
+       filters:
+          "tag:Deploy": Blue
+          "tag:Name": ConfigDiscoveryServer
+          instance-state-name: running
+       region: "{{ region }}"
+    register: new_server
+    
+  - name: All done, set new server to Green status
+    ec2_tag:
+       region: "{{ region }}"
+       resource: "{{ new_server.instances[0].id }}"
+       tags:
+          Deploy: Green
+       state: present
+
+  - name: Remove Blue Tag
+    ec2_tag:
+       region: "{{ region }}"
+       resource: "{{ new_server.instances[0].id }}"
+       tags:
+          Deploy: Blue
+       state: absent

@@ -1,10 +1,10 @@
 zuul:
   sensitiveHeaders:
   routes:
-#    uaa-service:
-#      sensitiveHeaders:
-#      path: /uaa/**
-#      stripPrefix: false
+    uaa-service:
+      sensitiveHeaders:
+      path: /api/users/**
+      stripPrefix: false
     account-service:
       sensitiveHeaders:
       path: /api/accounts/**

@@ -90,3 +90,11 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka
+endpoints:
+  enabled: false
+  health.enabled: false
+  info.enabled: false
+  logfile.enabled: false
+  loggers.enabled: false
+  metrics.enabled: false
+  trace.enabled: false

@@ -1,0 +1,11 @@
+lcbo-client:
+  url: https://www.lcboapi.com
+  key: MDo1NDQwN2RjYy0wMDhkLTExZTctYWEwNy0yMzI4NjgxOTRjOWU6V2hSaDdoOXBVbjFjTU80cUtBZlpxRkI4UlJDVWcxRWlBUWZZ
+  
+---
+spring:
+  profiles: dev
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create

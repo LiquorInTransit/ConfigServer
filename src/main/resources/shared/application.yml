@@ -16,7 +16,7 @@ logging:
 spring:
   datasource:
     name: test
-    url: jdbc:hsqldb:mem:test://localhost/test
+    url: jdbc:hsqldb:mem:test://localhost/test?characterEncoding=UTF-8
     username:
     password: 
   jpa:

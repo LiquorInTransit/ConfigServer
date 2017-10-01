@@ -74,6 +74,9 @@ endpoints:
   metrics.enabled: true
   trace.enabled: true
   
+lcbo-client:
+  key: MDo1NDQwN2RjYy0wMDhkLTExZTctYWEwNy0yMzI4NjgxOTRjOWU6V2hSaDdoOXBVbjFjTU80cUtBZlpxRkI4UlJDVWcxRWlBUWZZ
+  
 ---
    
 spring:

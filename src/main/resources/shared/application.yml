@@ -1,6 +1,5 @@
 server:
   port: 8080
-  
 logging:
   file: log.log
   level:
@@ -12,6 +11,16 @@ logging:
               Archaius1Utils: ERROR
           endpoint:
             EndpointUtils: ERROR
+          shared:
+            resolver:
+              aws:
+                ConfigClusterResolver: ERROR
+    org:
+      springframework:
+        cloud:
+          config:
+            client:
+              ConfigServicePropertySourceLocator: ERROR
             
 spring:
   datasource:
@@ -25,6 +34,7 @@ spring:
         dialect: org.hibernate.dialect.HSQLDialect
     hibernate:
       ddl-auto: none
+    show-sql: true
       
 security:
   basic:

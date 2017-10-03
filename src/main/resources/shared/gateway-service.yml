@@ -15,15 +15,15 @@ zuul:
       stripPrefix: false
     shopping-cart-service:
       sensitiveHeaders:
-      path: /api/cart
+      path: /api/cart/**
       stripPrefix: false
     product-service:
       sensitiveHeaders:
-      path: /api/products
+      path: /api/products/**
       stripPrefix: false
     delivery-service:
       sensitiveHeaders:
-      path: /api/deliveries
+      path: /api/deliveries/**
       stripPrefix: false
     
 

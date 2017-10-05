@@ -6,6 +6,10 @@ security:
       access-token-uri: http://www.login.liquorintransit.party/uaa/oauth/token
       grant-type: client_credentials
       scope: system
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
       
 ---
    

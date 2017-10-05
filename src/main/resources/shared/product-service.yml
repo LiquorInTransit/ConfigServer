@@ -4,8 +4,6 @@ lcbo-client:
   
 ---
 spring:
-  profiles: dev
-#spring:
-#  jpa:
-#    hibernate:
-#      ddl-auto: create
+  profiles: dev 
+  jpa:
+    show-sql: false

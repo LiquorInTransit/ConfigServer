@@ -22,7 +22,7 @@ logging:
             client:
               ConfigServicePropertySourceLocator: ERROR
 spring:
-  mvc:
+  webservices:
     servlet:
       load-on-startup: 1
   datasource:
@@ -71,6 +71,21 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://admin:admin@ec2-13-59-80-6.us-east-2.compute.amazonaws.com:8761/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 10000
+ribbon:
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  ConnectionTimeout: 3000
+  ReadTimeout: 15000
             
 management:
   contextPath: /mgmt

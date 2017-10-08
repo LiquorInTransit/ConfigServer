@@ -1,5 +1,15 @@
 server:
   port: 8761
+logging:
+  file: log.log
+  level:
+    com:
+      netflix:
+        eureka:
+          registry:
+            AbstractInstanceRegistry: ERROR
+          aws:
+            EIPManager: ERROR
   
 security:
   basic:

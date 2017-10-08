@@ -25,20 +25,10 @@ zuul:
       sensitiveHeaders:
       path: /api/deliveries/**
       stripPrefix: false
-    
+  host:
+    socket-timeout-millis: 10000
+      
 
-hystrix:
-  command:
-    uaa-service:
-      execution:
-        timeout:
-          enabled: false
-    default:
-      execution:
-        isolation:
-          strategy: THREAD
-          thread:
-            timeoutInMilliseconds: 10000
             
 
 ---

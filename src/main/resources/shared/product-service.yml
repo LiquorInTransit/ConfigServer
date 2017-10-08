@@ -3,22 +3,9 @@ lcbo-client:
   key: MDo1NDQwN2RjYy0wMDhkLTExZTctYWEwNy0yMzI4NjgxOTRjOWU6V2hSaDdoOXBVbjFjTU80cUtBZlpxRkI4UlJDVWcxRWlBUWZZ
 
 spring:
-  webservices:
-    servlet:
-      load-on-startup: 1
-  datasource:
-    name: test
-    url: jdbc:hsqldb:file:data/mydb
-    username: SA
-    password: 
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.HSQLDialect
     hibernate:
-      naming.implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
       ddl-auto: create
-    show-sql: true
 ---
 spring:
   profiles: dev 

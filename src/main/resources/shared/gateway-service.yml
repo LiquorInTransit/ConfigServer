@@ -25,6 +25,10 @@ zuul:
       sensitiveHeaders:
       path: /api/deliveries/**
       stripPrefix: false
+    delivery-tracker:
+      sensitiveHeaders:
+      path: /api/tracking/**
+      stripPrefix: false
   host:
     socket-timeout-millis: 10000
       

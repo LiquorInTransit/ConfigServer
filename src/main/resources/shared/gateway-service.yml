@@ -11,6 +11,7 @@ zuul:
       stripPrefix: false
     order-service:
       sensitiveHeaders:
+      serviceId: order-and-delivery-service
       path: /api/orders/**
       stripPrefix: false
     shopping-cart-service:
@@ -23,6 +24,7 @@ zuul:
       stripPrefix: false
     delivery-service:
       sensitiveHeaders:
+      serviceId: order-and-delivery-service
       path: /api/deliveries/**
       stripPrefix: false
     delivery-tracker:

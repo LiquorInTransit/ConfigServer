@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://liquorintransit-productsandstores.c0ezandtulvu.us-east-2.rds.amazonaws.com/LiquorInTransit
+    username: admin
+    password: 8167255peckovec
+    schema: NA
+    data: NA
+    
+    
+---
+
+spring:
+  profiles: dev
+  datasource:
+    name: test
+    url: jdbc:hsqldb:mem:test://localhost/test?characterEncoding=UTF-8
+    username: SA
+    password: 

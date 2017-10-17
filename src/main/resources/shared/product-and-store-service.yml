@@ -4,6 +4,10 @@ spring:
     url: jdbc:mysql://liquorintransit-productsandstores.c0ezandtulvu.us-east-2.rds.amazonaws.com/LiquorInTransit
     username: admin
     password: 8167255peckovec
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
     
     
 ---

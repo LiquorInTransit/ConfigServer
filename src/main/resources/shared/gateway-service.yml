@@ -32,6 +32,10 @@ zuul:
       sensitiveHeaders:
       path: /api/tracking/**
       stripPrefix: false
+    places-service:
+      sensitiveHeaders:
+      path: /api/places/**
+      stripPrefix: false
   host:
     socket-timeout-millis: 10000
       

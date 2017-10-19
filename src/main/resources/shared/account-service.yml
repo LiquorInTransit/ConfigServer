@@ -11,6 +11,16 @@ spring:
     hibernate:
       ddl-auto: create
       
+imgur:
+  oauth2:
+    resource:
+      access-token-uri: https://api.imgur.com/oauth2/token
+      grantType: password
+      clientId: 30c968b8bef59b4
+      clientSecret: 5ab2b7483e46068e8c5178d2da4ac010a008db44
+      username: LiquorInTransit
+      password: hbBmCGk5!
+      
 ---
    
 spring:

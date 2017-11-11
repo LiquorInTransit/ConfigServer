@@ -43,8 +43,9 @@ zuul:
             
 
 ---
-
 spring:
   profiles: dev
+  thymeleaf:
+    cache: false
 server:
   port: 8080

@@ -6,6 +6,9 @@ security:
       access-token-uri: http://www.login.liquorintransit.party/uaa/oauth/token
       grant-type: client_credentials
       scope: system
+feign:
+  hystrix:
+    enabled: true
       
 ---
    

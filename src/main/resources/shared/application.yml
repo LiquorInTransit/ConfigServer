@@ -127,7 +127,7 @@ eureka:
 endpoints:
   enabled: false
   shutdown.enabled: true
-  health.enabled: false
+  health.enabled: true
   info.enabled: false
   logfile.enabled: false
   loggers.enabled: false

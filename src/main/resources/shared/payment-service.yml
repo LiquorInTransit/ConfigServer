@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      
+stripe:
+  key: sk_test_U0Y1OZCoDGrpLibNXdRcf6vO

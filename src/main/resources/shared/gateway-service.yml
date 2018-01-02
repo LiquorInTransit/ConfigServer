@@ -36,6 +36,10 @@ zuul:
       sensitiveHeaders:
       path: /api/places/**
       stripPrefix: false
+    payment-service:
+      sensitiveHeaders:
+      path: /api/payments/**
+      stripPrefix: false
   host:
     socket-timeout-millis: 10000
       

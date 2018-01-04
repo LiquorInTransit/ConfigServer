@@ -43,7 +43,8 @@ zuul:
   host:
     socket-timeout-millis: 10000
       
-
+endpoints:
+  routes.enabled: true
             
 
 ---

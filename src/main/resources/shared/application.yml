@@ -84,7 +84,8 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
 ribbon:
-  MaxAutoRetries: 1
+  OkToRetryOnAllOperations: true
+  MaxAutoRetries: 2
   MaxAutoRetriesNextServer: 2
   ConnectionTimeout: 3000
   ReadTimeout: 10000
